@@ -1,3 +1,4 @@
+import { registration } from './../../shared/mock-data/registration';
 import { UserLoginModel } from './../models/user/user-login/user-login.model';
 //#region imports
 import { Actions } from '@ngrx/effects';
@@ -34,12 +35,7 @@ describe('[AUTH] [EFFECT] REGISTRATION-EFFECT', () => {
         });
     }));
     beforeEach(async(() => {
-        userLoginModel = <UserLoginModel>{
-            userLogin: 'testlogin',
-            email: 'test@test.com',
-            phoneNumber: 11111111,
-            password: 'p@ssw0rd'
-        };
+        userLoginModel = registration;
         userService = createUserServiceStub(
             true, true, true,
             undefined,

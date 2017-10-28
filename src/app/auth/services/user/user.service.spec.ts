@@ -1,3 +1,7 @@
+import { registrationResponse } from './../../../shared/mock-data/registration-response';
+import { loginResponse } from './../../../shared/mock-data/login-response';
+import { login } from './../../../shared/mock-data/login';
+import { registration } from './../../../shared/mock-data/registration';
 //#region imports
 import { UserRegistrationResponseModel } from './../../models/responses/user-registration-response/user-registration-response.model';
 import { UserLoginResponseModel } from './../../models/responses/user-login-response/user-login-response.model';
@@ -40,26 +44,10 @@ describe('[AUTH] [SERVICE] USER-SERVICE :', () => {
         mockBackend = backend;
     }))));
     beforeEach(async (() => {
-        userLoginModel = <UserLoginModel>{
-            userLogin: 'testlogin',
-            email: 'test@test.com',
-            phoneNumber: 11111111,
-            password: 'p@ssw0rd'
-        };
-        userLoginViewModel = <UserLoginViewModel>{
-            userLogin: 'test@test.com',
-            password: 'p@ssw0rd',
-            rememberme: false
-        };
-        userLoginResponseModel = <UserLoginResponseModel>{
-            userKey: 'userkey',
-            userLogin: 'testlogin',
-            isLogged: true
-        };
-        userRegistrationResponseModel = <UserRegistrationResponseModel>{
-            result: true,
-            listSameRecord: []
-        };
+        userLoginModel = registration;
+        userLoginViewModel = login;
+        userLoginResponseModel = loginResponse;
+        userRegistrationResponseModel = registrationResponse;
     }));
     afterEach(() => {
         userLoginModel = null;

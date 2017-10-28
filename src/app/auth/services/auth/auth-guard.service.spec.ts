@@ -1,3 +1,4 @@
+import { loginResponse } from './../../../shared/mock-data/login-response';
 //#region imports
 import { UserLoginResponseModel } from './../../models/responses/user-login-response/user-login-response.model';
 import { Store, StoreModule, combineReducers } from '@ngrx/store';
@@ -16,7 +17,7 @@ describe('[AUTH] [SERVICE] AUTH-GUARD-SERVICE :', () => {
   let userLoginResponseModel: UserLoginResponseModel;
   //#endregion
   //#region inits items and dispose
-  beforeEach(async (() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         StoreModule.forRoot({
@@ -29,17 +30,13 @@ describe('[AUTH] [SERVICE] AUTH-GUARD-SERVICE :', () => {
       ]
     });
   }));
-  beforeEach(async (() => {
+  beforeEach(async(() => {
     authGuardService = TestBed.get(AuthGuardService);
     authStore = TestBed.get(Store);
     spyOn(authStore, 'dispatch').and.callThrough();
   }));
   beforeEach(() => {
-    userLoginResponseModel = <UserLoginResponseModel>{
-      userKey: 'userkey',
-      userLogin: 'testuser',
-      isLogged: true
-    };
+    userLoginResponseModel = loginResponse;
   });
   afterEach(() => {
     authGuardService = null;

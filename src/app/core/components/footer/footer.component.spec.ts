@@ -1,28 +1,30 @@
-// /* tslint:disable:no-unused-variable */
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-// import { By } from '@angular/platform-browser';
-// import { DebugElement } from '@angular/core';
+/* tslint:disable:no-unused-variable */
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
-// import { FooterComponent } from './footer.component';
+import { FooterComponent } from './footer.component';
 
-// xdescribe('FooterComponent', () => {
-//   let component: FooterComponent;
-//   let fixture: ComponentFixture<FooterComponent>;
+describe('[CORE] [COMPONENT] FOOTER-COMPONENT', () => {
+  let component: FooterComponent;
+  let fixture: ComponentFixture<FooterComponent>;
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ FooterComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [FooterComponent]
+    });
+  }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(FooterComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  beforeEach(async(() => {
+    fixture = TestBed.createComponent(FooterComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
+  afterEach(() => {
+    component = null;
+    fixture = null;
+  });
+  it('should create instance component', async(() => {
+    expect(component).toBeTruthy();
+  }));
+});

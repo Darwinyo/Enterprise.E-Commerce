@@ -1,3 +1,4 @@
+import { registration } from './../../../shared/mock-data/registration';
 import { cold, hot } from 'jasmine-marbles';
 import { Observable, TestScheduler } from 'rxjs/Rx';
 import { CovalentLoadingModule, CovalentDialogsModule } from '@covalent/core';
@@ -67,12 +68,7 @@ describe('[AUTH] [PAGE] REGISTRATION-PAGE', () => {
     fixture.detectChanges();
   }));
   beforeEach(async(() => {
-    userLoginModel = <UserLoginModel>{
-      userLogin: 'testUser',
-      password: 'P@ssw0rd',
-      email: 'test@test.com',
-      phoneNumber: 12345678
-    };
+    userLoginModel = registration;
     userService = createUserServiceStub(true, true, true, null, null);
     userloginholder = fixture.debugElement.query(By.css('#userlogin_holder')).nativeElement;
     emailTxtholder = fixture.debugElement.query(By.css('#email_holder')).nativeElement;
@@ -462,14 +458,14 @@ describe('[AUTH] [PAGE] REGISTRATION-PAGE', () => {
     }));
     describe('UserLogin', () => {
       describe('Backend', () => {
-        it(`should subscribe event input debounceTime (1500) and dispatch ValidateUserLogin action,
+        it(`should subscribe event input debounceTime (1000) and dispatch ValidateUserLogin action,
          when dispatch input phone`, fakeAsync(() => {
             spyOn(component, 'checkUserLogin').and.callThrough();
             userloginTxtbox.value = userLoginModel.userLogin;
             userloginTxtbox.dispatchEvent(new Event('input'));
-            tick(1499);
+            tick(999);
             expect(component.checkUserLogin).not.toHaveBeenCalledWith(userLoginModel.userLogin);
-            tick(1500);
+            tick(1000);
             expect(component.checkUserLogin).toHaveBeenCalledWith(userLoginModel.userLogin);
             expect(authStore.dispatch)
               .toHaveBeenCalledWith(new RegistrationPageActions.ValidateUserLogin(userLoginModel.userLogin));
@@ -482,7 +478,7 @@ describe('[AUTH] [PAGE] REGISTRATION-PAGE', () => {
             );
             userloginTxtbox.value = userLoginModel.userLogin;
             userloginTxtbox.dispatchEvent(new Event('input'));
-            tick(1500);
+            tick(1000);
             expect(authStore.dispatch).toHaveBeenCalledWith(
               new RegistrationPageActions.ValidateUserLoginError(new Error('UserLogin already registered'))
             );
@@ -497,7 +493,7 @@ describe('[AUTH] [PAGE] REGISTRATION-PAGE', () => {
             );
             userloginTxtbox.value = userLoginModel.userLogin;
             userloginTxtbox.dispatchEvent(new Event('input'));
-            tick(1500);
+            tick(1000);
             expect(authStore.dispatch).toHaveBeenCalledWith(
               new RegistrationPageActions.ValidateUserLoginSuccess());
             fixture.detectChanges();
@@ -507,14 +503,14 @@ describe('[AUTH] [PAGE] REGISTRATION-PAGE', () => {
     });
     describe('Phone', () => {
       describe('Backend', () => {
-        it(`should subscribe event input debounceTime (1500) and dispatch ValidatePhone action,
+        it(`should subscribe event input debounceTime (1000) and dispatch ValidatePhone action,
          when dispatch input phone`, fakeAsync(() => {
             spyOn(component, 'checkPhone').and.callThrough();
             phoneTxtbox.value = userLoginModel.phoneNumber.toString();
             phoneTxtbox.dispatchEvent(new Event('input'));
-            tick(1499);
+            tick(999);
             expect(component.checkPhone).not.toHaveBeenCalledWith(userLoginModel.phoneNumber.toString());
-            tick(1500);
+            tick(1000);
             expect(component.checkPhone).toHaveBeenCalledWith(userLoginModel.phoneNumber.toString());
             expect(authStore.dispatch)
               .toHaveBeenCalledWith(new RegistrationPageActions.ValidatePhone(userLoginModel.phoneNumber.toString()));
@@ -527,7 +523,7 @@ describe('[AUTH] [PAGE] REGISTRATION-PAGE', () => {
             );
             phoneTxtbox.value = userLoginModel.phoneNumber.toString();
             phoneTxtbox.dispatchEvent(new Event('input'));
-            tick(1500);
+            tick(1000);
             expect(authStore.dispatch).toHaveBeenCalledWith(
               new RegistrationPageActions.ValidatePhoneError(new Error('Phone already registered'))
             );
@@ -542,7 +538,7 @@ describe('[AUTH] [PAGE] REGISTRATION-PAGE', () => {
             );
             phoneTxtbox.value = userLoginModel.phoneNumber.toString();
             phoneTxtbox.dispatchEvent(new Event('input'));
-            tick(1500);
+            tick(1000);
             expect(authStore.dispatch).toHaveBeenCalledWith(
               new RegistrationPageActions.ValidatePhoneSuccess());
             fixture.detectChanges();
@@ -552,14 +548,14 @@ describe('[AUTH] [PAGE] REGISTRATION-PAGE', () => {
     });
     describe('Email', () => {
       describe('Backend', () => {
-        it(`should subscribe event input debounceTime (1500) and dispatch ValidateEmail action,
+        it(`should subscribe event input debounceTime (1000) and dispatch ValidateEmail action,
          when dispatch input email`, fakeAsync(() => {
             spyOn(component, 'checkEmail').and.callThrough();
             emailTxtbox.value = userLoginModel.email;
             emailTxtbox.dispatchEvent(new Event('input'));
-            tick(1499);
+            tick(999);
             expect(component.checkEmail).not.toHaveBeenCalledWith(userLoginModel.email);
-            tick(1500);
+            tick(1000);
             expect(component.checkEmail).toHaveBeenCalledWith(userLoginModel.email);
             expect(authStore.dispatch)
               .toHaveBeenCalledWith(new RegistrationPageActions.ValidateEmail(userLoginModel.email));
@@ -572,7 +568,7 @@ describe('[AUTH] [PAGE] REGISTRATION-PAGE', () => {
             );
             emailTxtbox.value = userLoginModel.email;
             emailTxtbox.dispatchEvent(new Event('input'));
-            tick(1500);
+            tick(1000);
             expect(authStore.dispatch).toHaveBeenCalledWith(
               new RegistrationPageActions.ValidateEmailError(new Error('Email already registered'))
             );
@@ -587,7 +583,7 @@ describe('[AUTH] [PAGE] REGISTRATION-PAGE', () => {
             );
             emailTxtbox.value = userLoginModel.email;
             emailTxtbox.dispatchEvent(new Event('input'));
-            tick(1500);
+            tick(1000);
             expect(authStore.dispatch).toHaveBeenCalledWith(
               new RegistrationPageActions.ValidateEmailSuccess());
             fixture.detectChanges();

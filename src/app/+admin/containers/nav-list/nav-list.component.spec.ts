@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { NavListComponent } from './nav-list.component';
 
-describe('NavListComponent', () => {
+xdescribe('NavListComponent', () => {
   let component: NavListComponent;
   let fixture: ComponentFixture<NavListComponent>;
 

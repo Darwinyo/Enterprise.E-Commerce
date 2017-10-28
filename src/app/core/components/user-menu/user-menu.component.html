@@ -16,7 +16,7 @@
 </a>
 <mat-divider></mat-divider>
 <ng-template let-last="last" ngFor let-menu [ngForOf]="menuModel">
-  <a mat-list-item [href]="menu.menuHref">
+  <a mat-list-item routerLink="menu.menuHref">
     <mat-icon matListAvatar>{{menu.menuIcon}}</mat-icon>
     <p matLine>{{menu.menuTitle}}</p>
   </a>

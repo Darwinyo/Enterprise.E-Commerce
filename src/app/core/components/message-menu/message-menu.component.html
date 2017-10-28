@@ -1,5 +1,5 @@
 <ng-template let-last="last" ngFor let-menu [ngForOf]="menuModel">
-  <a mat-list-item routerLink="menu.menuHref">
+  <a mat-list-item (click)="onMenu_Clicked(menu.menuHref)">
     <mat-icon matListAvatar>{{menu.menuIcon}}</mat-icon>
     <p matLine>{{menu.menuTitle}}</p>
     <span></span>

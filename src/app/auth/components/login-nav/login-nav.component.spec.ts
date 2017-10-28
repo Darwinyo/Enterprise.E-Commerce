@@ -1,3 +1,4 @@
+import { login } from './../../../shared/mock-data/login';
 import { CovalentLoadingModule } from '@covalent/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserLoginViewModel } from './../../viewmodels/user-login/user-login.viewmodel';
@@ -40,11 +41,7 @@ describe('[AUTH] [COMPONENT] LOGIN-NAV-COMPONENT', () => {
     passtxtbox = fixture.debugElement.query(By.css('#inputPassword')).nativeElement;
     remembermechkbox = fixture.debugElement.query(By.css('#rememberme_chkbox label')).nativeElement;
     submitbtn = fixture.debugElement.query(By.css('#login_btn')).nativeElement;
-    userLoginViewModel = <UserLoginViewModel>{
-      userLogin: 'email',
-      password: 'pass',
-      rememberme: true
-    };
+    userLoginViewModel = login;
   }));
   afterEach(() => {
     component = null;

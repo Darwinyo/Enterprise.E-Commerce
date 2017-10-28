@@ -98,17 +98,17 @@ export class NavbarContainer implements OnInit, OnDestroy {
     this.messageMenuModel = [
       <MenuModel>{
         menuTitle: 'Message',
-        menuHref: 'message',
+        menuHref: '/message',
         menuIcon: 'email',
         menuNotification: 3
       }, <MenuModel>{
         menuTitle: 'Product Reviews',
-        menuHref: 'product-reviews',
+        menuHref: '/product-reviews',
         menuIcon: 'comment',
         menuNotification: 3
       }, <MenuModel>{
         menuTitle: 'Customer Service',
-        menuHref: 'customer-service',
+        menuHref: '/customer-service',
         menuIcon: 'room_service'
       }];
     for (let i = 0; i < 3; i++) {

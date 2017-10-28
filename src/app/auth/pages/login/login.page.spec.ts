@@ -1,3 +1,4 @@
+import { login } from './../../../shared/mock-data/login';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Rx';
 //#region imports
@@ -64,11 +65,7 @@ describe('[AUTH] [PAGE] LOGIN-PAGE', () => {
         remembermechkbox = fixture.debugElement.query(By.css('#rememberme_chkbox label')).nativeElement;
         submitbtn = fixture.debugElement.query(By.css('#login_btn')).nativeElement;
         iconPassword = fixture.debugElement.query(By.css('#icon_password')).nativeElement;
-        userLoginViewModel = <UserLoginViewModel>{
-            userLogin: 'email',
-            password: 'pass',
-            rememberme: true
-        };
+        userLoginViewModel = login;
     }));
     afterEach(() => {
         component = null;

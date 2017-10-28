@@ -1,3 +1,6 @@
+import { registrationResponse } from './../../shared/mock-data/registration-response';
+import { registration } from './../../shared/mock-data/registration';
+import { loginResponse } from './../../shared/mock-data/login-response';
 import { UserRegistrationResponseModel } from './../models/responses/user-registration-response/user-registration-response.model';
 import { UserLoginModel } from './../models/user/user-login/user-login.model';
 import { AlertModel } from './../../shared/models/dialogs/alert.model';
@@ -61,21 +64,9 @@ describe('[AUTH] [EFFECT] AUTH-EFFECT', () => {
             password: 'p@ssw0rd',
             rememberme: false
         };
-        userLoginResponseModel = <UserLoginResponseModel>{
-            userKey: 'userkey',
-            userLogin: 'test',
-            isLogged: true
-        };
-        userRegistrationResponseModel = <UserRegistrationResponseModel>{
-            result: false,
-            listSameRecord: []
-        };
-        userLoginModel = <UserLoginModel>{
-            userLogin: 'testlogin',
-            email: 'test@test.com',
-            phoneNumber: 11111111,
-            password: 'p@ssw0rd'
-        };
+        userLoginResponseModel = loginResponse;
+        userRegistrationResponseModel = registrationResponse;
+        userLoginModel = registration;
         userService = createUserServiceStub(
             true, true, true,
             userLoginResponseModel,

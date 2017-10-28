@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { FooterInnerComponent } from './footer-inner.component';
 
-describe('FooterInnerComponent', () => {
+xdescribe('FooterInnerComponent', () => {
   let component: FooterInnerComponent;
   let fixture: ComponentFixture<FooterInnerComponent>;
 

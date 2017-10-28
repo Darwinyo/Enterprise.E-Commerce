@@ -1,5 +1,5 @@
 import { MenuModel } from './../../../shared/models/menu/menu.model';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-core-message-menu',
@@ -8,9 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MessageMenuComponent implements OnInit {
   @Input() menuModel: MenuModel[];
-  constructor() { }
+  @Output() navigateEvent: EventEmitter<string>;
+  constructor() {
+    this.navigateEvent = new EventEmitter();
+  }
 
   ngOnInit() {
   }
-
+  onMenu_Clicked(url: string) {
+    this.navigateEvent.emit(url);
+  }
 }
