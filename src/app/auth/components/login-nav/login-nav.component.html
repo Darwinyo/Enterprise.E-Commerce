@@ -1,0 +1,35 @@
+<form
+  id="NavLoginForm" 
+  class="form-area" 
+  #loginForm="ngForm" 
+  (ngSubmit)="onNavLoginForm_Submit()">
+  <ng-template tdLoading [tdLoadingUntil]="!pending" tdLoadingStrategy="overlay">
+    <div class="control-group">
+      <mat-form-field class="textbox-field">
+        <input matInput type="text" id="inputEmail" [(ngModel)]="userLoginViewModel.userLogin" name="userlogin" placeholder="User Login"
+          value="">
+      </mat-form-field>
+    </div>
+    <div class="control-group">
+      <mat-form-field class="textbox-field">
+        <input matInput id="inputPassword" [(ngModel)]="userLoginViewModel.password" name="password" [type]="passwordType()" placeholder="Enter your password">
+        <mat-icon matSuffix id="TooglePassword" (click)="onTogglePassword_Click()">{{hiddenpass ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="column" class="control-group bottom-container">
+      <div fxLayout="row">
+        <div fxFlex="60">
+            <mat-checkbox id="rememberme_chkbox" [(ngModel)]="userLoginViewModel.rememberme" name="rememberme" color="primary" class="small-gray fs-14">Remember Me</mat-checkbox>
+        </div>
+        <div fxFlex="40" class="text-align-right">
+          <small>
+            <a routerLink="/recovery" id="reset-password">
+              Forgot Password?
+            </a>
+          </small>
+        </div>
+      </div>
+      <button mat-raised-button color="primary" id="login_btn" type="submit" class="button-block button-padding-top">Sign In</button>
+    </div>
+  </ng-template>
+</form>

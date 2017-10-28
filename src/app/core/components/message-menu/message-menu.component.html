@@ -1,0 +1,10 @@
+<ng-template let-last="last" ngFor let-menu [ngForOf]="menuModel">
+  <a mat-list-item routerLink="menu.menuHref">
+    <mat-icon matListAvatar>{{menu.menuIcon}}</mat-icon>
+    <p matLine>{{menu.menuTitle}}</p>
+    <span></span>
+    <td-notification-count color="accent" [notifications]="menu.menuNotification">
+    </td-notification-count>
+  </a>
+  <mat-divider *ngIf="!last"></mat-divider>
+</ng-template>

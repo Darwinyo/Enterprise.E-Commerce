@@ -1,0 +1,29 @@
+<div *ngIf="cartList.length>0">
+  <ng-template let-last="last" ngFor let-item [ngForOf]="cartList">
+    <a (click)="onProductItem_Clicked(item.productId)" mat-list-item>
+      <div matLine class="cart-container" fxLayout="row" fxLayoutAlign="center stretch">
+        <div fxFlex="20">
+          <img [src]="item.productFrontImage" alt="item.productName" class="img-40">
+        </div>
+        <div fxFlex="50">
+          <span class="white-space-initial word-break">{{item.productName}}</span>
+        </div>
+        <div mat-list-item fxFlex="30" fxLayout="column" fxLayoutAlign="start end">
+          <p mat-line class="text-price">$ {{item.productPrice}}</p>
+          <small mat-line>{{item.productQuantity}} pcs</small>
+        </div>
+      </div>
+      <ng-template matLine></ng-template>
+    </a>
+    <mat-divider *ngIf="!last"></mat-divider>
+  </ng-template>
+</div>
+
+<div *ngIf="cartList.length==0">
+  <a mat-list-item>
+    <h4 matLine class="padding-10">
+      <span class="fw-600">Empty Cart</span>
+    </h4>
+    <p matLine class="padding-10">Please Add Item To Cart.</p>
+  </a>
+</div>

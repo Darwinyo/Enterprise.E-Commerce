@@ -1,0 +1,16 @@
+@import 'variables';
+@include mat-core();
+@include angular-material-theme($theme);
+@include covalent-theme($theme);
+// (optional) Additional themes
+@include covalent-markdown-theme($theme);
+@include covalent-highlight-theme();
+
+@mixin custom-anchor($font-color,$text-decoration){
+    a {
+        color: $font-color !important;
+        &:hover {
+          text-decoration: $text-decoration !important;
+        }
+      }
+}

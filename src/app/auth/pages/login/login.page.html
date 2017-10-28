@@ -1,0 +1,48 @@
+<ng-template tdLoading [tdLoadingUntil]="!(pending$|async)" tdLoadingStrategy="overlay">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-card class="card-form">
+      <mat-card-header fxLayoutAlign="center">
+        <mat-card-title>
+          <span class="title-form fw-600 fs-18">
+            Login
+          </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form #loginForm="ngForm" class="form-area" (ngSubmit)="onNavLoginForm_Submit()">
+          <div class="control-group">
+            <mat-form-field class="textbox-field">
+              <input matInput type="text" id="inputEmail" [(ngModel)]="userLoginViewModel.userLogin" name="userlogin" placeholder="User Login"
+                value="">
+            </mat-form-field>
+          </div>
+          <div class="control-group">
+            <mat-form-field class="textbox-field">
+              <input matInput id="inputPassword" [(ngModel)]="userLoginViewModel.password" name="password" [type]="passwordType()" placeholder="Enter your password">
+              <mat-icon id="icon_password" matSuffix (click)="onTogglePassword_Click()">{{(hiddenpass$|async) ? 'visibility' : 'visibility_off'}}</mat-icon>
+            </mat-form-field>
+          </div>
+          <div fxLayout="column" class="control-group bottom-container">
+            <div fxLayout="row">
+              <div fxFlex="60">
+                <mat-checkbox id="rememberme_chkbox" [(ngModel)]="userLoginViewModel.rememberme" name="rememberme" color="primary" class="small-gray fs-14">Remember Me</mat-checkbox>
+              </div>
+              <div fxFlex="40" class="text-align-right">
+                <small>
+                  <a routerLink="/recovery" id="reset-password">
+                    Forgot Password?
+                  </a>
+                </small>
+              </div>
+            </div>
+            <button mat-raised-button color="primary" id="login_btn" type="submit" class="button-block button-padding-top">Sign In</button>
+          </div>
+          <p class="description-text">
+            Dont have Account? Register
+            <a routerLink="/register">Here</a>
+          </p>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>

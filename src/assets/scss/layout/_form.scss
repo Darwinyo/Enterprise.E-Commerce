@@ -1,0 +1,31 @@
+@import '../abstracts/variables';
+.form-area {
+  background-color: $color-white;
+  padding: 30px;
+  .control-group {
+    .textbox-field {
+      width: 100%;
+    }
+    .small-gray {
+      color: $font-color-small;
+    }
+    .button-block {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .text-align-right {
+      text-align: right;
+    }
+  }
+  .bottom-container {
+    margin-top: 15px;
+  }
+  .button-padding-top {
+    margin-top: 10px;
+  }
+  .description-text {
+    text-align: center;
+    margin-top: 10px;
+  }
+}

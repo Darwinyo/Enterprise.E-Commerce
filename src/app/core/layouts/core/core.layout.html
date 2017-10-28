@@ -1,0 +1,24 @@
+<td-layout>
+  <td-navigation-drawer flex sidenavTitle="Covalent" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
+    <mat-nav-list>
+      <a *ngFor="let item of routes" mat-list-item>
+        <mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+    </mat-nav-list>
+    <div td-navigation-drawer-menu>
+      <mat-nav-list>
+        <a *ngFor="let item of usermenu" mat-list-item>
+          <mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+      </mat-nav-list>
+    </div>
+  </td-navigation-drawer>
+  <td-layout-nav color="toolbar">
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <app-core-navbar flex></app-core-navbar>
+    </div>
+    <router-outlet name="core"></router-outlet>
+    <app-core-chat (click)="toggleChat()" [style.display]="(showChat$|async)?'block':'none'" #chat (sendEvent)="send($event)"></app-core-chat>
+    <td-layout-footer>
+      <app-core-footer></app-core-footer>
+    </td-layout-footer>
+  </td-layout-nav>
+</td-layout>

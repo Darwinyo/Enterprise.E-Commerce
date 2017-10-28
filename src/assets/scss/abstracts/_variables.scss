@@ -1,0 +1,27 @@
+@import '../vendor/module';
+$primary: mat-palette($mat-green, 800);
+$accent: mat-palette($mat-light-blue, 600, A100, A400);
+$warn: mat-palette($mat-red, 600);
+$toolbar:mat-palette($mat-grey, 100);
+$theme: mat-light-theme($primary, $accent, $warn);
+$color-white:#fff;
+$color-grey-300:#e0e0e0;
+$color-grey-400:#bdbdbd;
+$color-grey-500:#909090;
+$color-grey-600:#757575;
+$color-green-800:#2e7d32;
+$color-green-900:#1b5e20;
+$color-orange-900:#e65100;
+$color-transparent-1:rgba(0, 0, 0, .1);
+$color-transparent-2:rgba(0, 0, 0, .2);
+$color-transparent-5:rgba(0, 0, 0, .5);
+$color-transparent-7:rgba(0, 0, 0, .7);
+// font color
+$font-color-textbox:$color-grey-600;
+$font-color-small:$color-grey-500;
+$font-color-anchor:$color-green-800 !default;
+$font-color-price:$color-orange-900;
+// btn-color
+$btn-color-primary:$color-green-800;
+$btn-color-hover:$color-green-900;
+$btn-color-disabled:$color-transparent-2;

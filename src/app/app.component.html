@@ -1,0 +1,14 @@
+<!-- <mat-sidenav-container class="app-container">
+  <mat-sidenav #sidenav class="app-sidenav">
+    <app-core-sidebar></app-core-sidebar>
+  </mat-sidenav>
+
+  <div class="app-sidenav-content">
+    <app-core-navbar (openSidebar)="openSidebar()"></app-core-navbar>
+    <router-outlet></router-outlet>
+    <app-core-chat (click)="toggleChat()" [style.display]="(showChat$|async)?'block':'none'" #chat (sendEvent)="send($event)"></app-core-chat>
+  </div>
+
+</mat-sidenav-container> -->
+
+<router-outlet></router-outlet>

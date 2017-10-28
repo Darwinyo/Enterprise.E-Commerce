@@ -1,0 +1,28 @@
+.PriceFont{
+    color: #ff5722;
+}
+.product-image-container{
+    height: 200px;
+    align-items: center;
+    display: flex;
+    padding: 20px;    
+}
+.product-image{
+}
+.product-card{
+    width: 200px;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+.starspan{
+    margin-left: -6px;
+}
+.starcell{
+    padding-right: 0px;
+}
+.padding-control{
+    margin-bottom: 10px;
+}
+.product-card-grid{
+    width: 188.5px;
+}

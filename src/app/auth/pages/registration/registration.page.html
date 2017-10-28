@@ -1,0 +1,79 @@
+<ng-template tdLoading [tdLoadingUntil]="!(pending$|async)" tdLoadingStrategy="overlay">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-card class="card-form">
+      <mat-card-header fxLayoutAlign="center">
+        <mat-card-title>
+          <span class="title-form fw-600 fs-18">
+            Registration
+          </span>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="registrationForm" class="form-area" (ngSubmit)="onRegistrationForm_Submit()">
+          <div id="userlogin_holder" class="control-group">
+            <mat-form-field class="textbox-field">
+              <input matInput
+                type="text" id="userlogin_txtbox"
+                placeholder="User Login" #userloginTxtBox formControlName="userLogin">
+            </mat-form-field>
+            <mat-error *ngIf="userLogin.invalid && (userLogin.dirty||userLogin.touched)">
+              {{getUserLogin_ErrorMessage()}}
+            </mat-error>
+          </div>
+          <div id="phone_holder" class="control-group">
+            <mat-form-field class="textbox-field">
+              <input matInput type="tel"
+                id="phone_txtbox" placeholder="Phone Number" 
+                #phoneTxtBox formControlName="phoneNumber">
+            </mat-form-field>
+            <mat-error *ngIf="phoneNumber.invalid && (phoneNumber.dirty||phoneNumber.touched)">
+              {{getPhone_ErrorMessage()}}
+            </mat-error>
+          </div>
+          <div id="email_holder" class="control-group">
+            <mat-form-field class="textbox-field">
+              <input matInput type="email"
+                id="email_txtbox" #emailTxtBox 
+                placeholder="Email" formControlName="email">
+            </mat-form-field>
+            <mat-error *ngIf="email.invalid && (email.dirty||email.touched)">
+              {{getEmail_ErrorMessage()}}
+            </mat-error>
+          </div>
+          <div id="password_holder" class="control-group">
+            <mat-form-field class="textbox-field">
+              <input matInput id="password_txtbox"
+                placeholder="Password"
+                formControlName="password" type="password">
+            </mat-form-field>
+            <mat-error *ngIf="password.invalid && (password.dirty||password.touched)">
+              {{getPassword_ErrorMessage()}}
+            </mat-error>
+          </div>
+          <div fxLayout="column" class="control-group bottom-container">
+            <button 
+              mat-raised-button color="primary" 
+              id="registration_btn" 
+              type="submit" 
+              [disabled]="formValidator()"
+              [class.btn-disabled]="formValidator()" 
+              [class.btn-primary]="!formValidator()"
+              class="button-block button-padding-top">
+              Create Account
+            </button>
+              <p class="description-text">
+                Click Create Account button, we assume you agree with
+                <br>
+                <a routerLink="/terms" target="_blank">Terms and Conditions</a>, with
+                <a routerLink="/privacy-policy" target="_blank">Privacy Policy</a> Enterprise.
+              </p>
+              <p class="description-text">
+                Already have Account? Login
+                <a routerLink="/login">Here</a>
+              </p>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>

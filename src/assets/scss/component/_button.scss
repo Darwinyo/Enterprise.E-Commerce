@@ -1,0 +1,14 @@
+@import './../abstracts/variables';
+.btn-primary {
+  background-color: $btn-color-primary;
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    background-color: $btn-color-hover !important;
+  }
+}
+
+.btn-disabled {
+  background-color: $btn-color-disabled;
+}

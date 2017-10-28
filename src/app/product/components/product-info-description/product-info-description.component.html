@@ -1,0 +1,23 @@
+<ul class="product-info-description-header">
+  <li class="product-info-tab-header-item product-info-tab-header-item-active">
+    <div class="product-info-tab-link">Description</div>
+  </li>
+  <li class="product-info-tab-header-item">
+    <div class="product-info-tab-link">Comments</div>
+  </li>
+</ul>
+<div class="product-info-description-content">
+  <div class="product-info-item">
+    <div class="product-info-description">
+      <span>
+        {{descriptions}}
+      </span>
+    </div>
+    <div class="product-info-table">
+      <div class="product-info-table-row" *ngFor="let detail of detailsProduct">
+        <div class="product-info-table-head">{{detail.productSpecTitle}}</div>
+        <div class="product-info-table-content">{{detail.productSpecValue}}</div>
+      </div>
+    </div>
+  </div>
+</div>

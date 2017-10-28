@@ -1,0 +1,104 @@
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button mat-icon-button td-menu-button tdLayoutToggle>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-icon [routerLink]="['/']" class="mat-icon-logo cursor-pointer" svgIcon="assets:enterprise"></mat-icon>
+  <span [routerLink]="['/']" class="cursor-pointer">Enterprise</span>
+  <app-core-nav-searchbar flex></app-core-nav-searchbar>
+  <div fxLayout="row" fxLayoutAlign="end stretch" *ngIf="(logged$|async)">
+    <div fxLayoutAlign="start stretch">
+      <button mat-icon-button [matMenuTriggerFor]="notificationsMenu">
+        <td-notification-count [notifications]="3">
+          <mat-icon>notifications</mat-icon>
+        </td-notification-count>
+      </button>
+      <mat-menu #notificationsMenu="matMenu" [overlapTrigger]="false">
+        <td-menu>
+          <div td-menu-header class="md-subhead">Notifications</div>
+          <mat-nav-list dense>
+            <ng-template let-last="last" ngFor [ngForOf]="[0,1,2,3,4,5,6,7,8,9]">
+              <a mat-list-item>
+                <mat-icon matListAvatar>today</mat-icon>
+                <h4 matLine>
+                  <span class="text-wrap">A user did an activity on an item that you've subscribed to follow actions on.</span>
+                </h4>
+                <p matLine>22 minutes ago</p>
+              </a>
+              <mat-divider *ngIf="!last"></mat-divider>
+            </ng-template>
+          </mat-nav-list>
+          <button mat-button color="primary" td-menu-footer>
+            See All Notifications
+          </button>
+        </td-menu>
+      </mat-menu>
+    </div>
+    <div fxLayoutAlign="start stretch">
+      <button mat-icon-button [matMenuTriggerFor]="messageMenu">
+        <td-notification-count color="primary" [notifications]="false">
+          <mat-icon>messages</mat-icon>
+        </td-notification-count>
+      </button>
+      <mat-menu #messageMenu="matMenu" [overlapTrigger]="false">
+        <td-menu>
+          <mat-nav-list dense>
+            <app-core-message-menu [menuModel]="messageMenuModel"></app-core-message-menu>
+          </mat-nav-list>
+        </td-menu>
+      </mat-menu>
+    </div>
+    <div fxLayoutAlign="start stretch">
+      <button mat-icon-button [matMenuTriggerFor]="cartMenu">
+        <td-notification-count [notifications]="3">
+          <mat-icon>shopping_cart</mat-icon>
+        </td-notification-count>
+      </button>
+      <mat-menu #cartMenu="matMenu" [overlapTrigger]="false">
+        <td-menu>
+          <div td-menu-header class="md-subhead" *ngIf="cartList.length>0">Cart</div>
+          <mat-nav-list dense>
+            <app-core-cart [cartList]="cartList" (reviewEvent)="addReview($event)"></app-core-cart>
+          </mat-nav-list>
+          <button mat-button color="primary" td-menu-footer *ngIf="cartList.length>0">
+            View All Cart
+          </button>
+        </td-menu>
+      </mat-menu>
+    </div>
+    <div fxLayoutAlign="start stretch">
+      <button mat-icon-button [matMenuTriggerFor]="userMenu">
+        <td-notification-count [notifications]="false">
+          <mat-icon>person</mat-icon>
+        </td-notification-count>
+      </button>
+      <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
+        <td-menu>
+          <mat-nav-list dense>
+            <app-core-user-menu [menuModel]="userMenuModel"></app-core-user-menu>
+          </mat-nav-list>
+        </td-menu>
+      </mat-menu>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end stretch" *ngIf="!(logged$|async)">
+    <div fxLayoutAlign="start stretch">
+      <button mat-button>
+        <a routerLink="/register">Register</a>
+      </button>
+    </div>
+    <div fxLayoutAlign="start stretch" class="placeholder-menu">
+      <button class="navbar-btn-login" (click)="toggleDropLogin()">Login</button>
+      <ul *ngIf="toggleLogin$|async" class="dropdown-menu dropdown-login" role="menu">
+        <li>
+          <div class="login-nav-container">
+            <app-auth-login-nav (loginEvent)="onLoginUser($event)"
+              (togglePasswordEvent)="onTogglePassword()"
+              [hiddenpass]="loginNavComponentIsPasswordShow$|async"
+              [pending]="loginNavComponentPending$|async">
+            </app-auth-login-nav>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

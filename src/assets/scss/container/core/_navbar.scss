@@ -1,0 +1,28 @@
+@import './../../component/dropdown-holder';
+.dropdown-login {
+  margin: 0 0 0 -320px;
+  &::after {
+    right: 25px;
+  }
+}
+
+.placeholder-menu {
+  position: relative;
+}
+
+.login-nav-container {
+  width: 386px;
+}
+
+.navbar-btn-login {
+  background-color: transparent;
+  border-radius: 3px;
+  border: solid 1px $color-transparent-1;
+  padding: 0 15px;
+  color: $color-transparent-5;
+  font-weight: 600;
+  font-size: 12px;
+  &:hover {
+    background-color: $color-transparent-1;
+  }
+}

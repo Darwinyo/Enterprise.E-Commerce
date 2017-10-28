@@ -1,0 +1,17 @@
+@import './../abstracts/_variables.scss';
+
+.dropdown-menu {
+  top: 50px;
+  border: 1px solid #bdbdbd;
+  z-index: 1000;
+  display: block;
+  padding: 0 0 !important;
+  &::after {
+    position: absolute;
+    border-style: solid;
+    content: '';
+    top: -20px;
+    border-width: 10px;
+    border-color: transparent transparent $color-white;
+  }
+}

@@ -1,0 +1,24 @@
+<a mat-list-item href="">
+  <span matLine class="fs-11">My Profile</span>
+  <div matLine>
+    <span class="fw-600">Darwin Yo</span>
+    <div class="italic fs-11">
+      Verified Account
+    </div>
+  </div>
+</a>
+<mat-divider></mat-divider>
+<a mat-list-item href="">
+  <span matLine class="fs-11">Balance</span>
+  <div matLine>
+    <span class="fw-600">Rp 0</span>
+  </div>
+</a>
+<mat-divider></mat-divider>
+<ng-template let-last="last" ngFor let-menu [ngForOf]="menuModel">
+  <a mat-list-item [href]="menu.menuHref">
+    <mat-icon matListAvatar>{{menu.menuIcon}}</mat-icon>
+    <p matLine>{{menu.menuTitle}}</p>
+  </a>
+  <mat-divider *ngIf="!last"></mat-divider>
+</ng-template>
