@@ -1,3 +1,9 @@
+import { navigationMenuCategories } from './../../../shared/mock-data/navigation-menu-categories';
+import { navigationMenuGuest } from './../../../shared/mock-data/navigation-menu-guest';
+import { navigationMenuPersonal } from './../../../shared/mock-data/navigation-menu-personal';
+import { navigationMenu } from './../../../shared/mock-data/navigation-menu';
+import { MenuListModel } from './../../../shared/models/menu/menu-list.model';
+import { MenuModel } from './../../../shared/models/menu/menu.model';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
@@ -8,47 +14,18 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 // tslint:disable-next-line:component-class-suffix
 export class CoreLayout implements OnInit {
-  // routes must be define in db
-  routes: Object[] = [{
-    icon: 'home',
-    route: '.',
-    title: 'Home',
-  }, {
-    icon: 'library_books',
-    route: '.',
-    title: 'Documentation',
-  }, {
-    icon: 'color_lens',
-    route: '.',
-    title: 'Style Guide',
-  }, {
-    icon: 'view_quilt',
-    route: '.',
-    title: 'Layouts',
-  }, {
-    icon: 'picture_in_picture',
-    route: '.',
-    title: 'Components & Addons',
-  },
-  ];
-  // define in db
-  usermenu: Object[] = [{
-    icon: 'swap_horiz',
-    route: '.',
-    title: 'Switch account',
-  }, {
-    icon: 'tune',
-    route: '.',
-    title: 'Account settings',
-  }, {
-    icon: 'exit_to_app',
-    route: '.',
-    title: 'Sign out',
-  },
-  ];
+  routes: MenuModel[];
+  usermenu: MenuModel[];
+  guestMenu: MenuModel[];
+  categoriesMenu: MenuListModel[];
+
   constructor() { }
 
   ngOnInit() {
+    this.routes = navigationMenu;
+    this.usermenu = navigationMenuPersonal;
+    this.guestMenu = navigationMenuGuest;
+    this.categoriesMenu = navigationMenuCategories;
   }
 
 }

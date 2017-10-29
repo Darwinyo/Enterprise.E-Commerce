@@ -1,13 +1,24 @@
 <td-layout>
-  <td-navigation-drawer flex sidenavTitle="Covalent" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
+  <td-navigation-drawer flex sidenavTitle="Covalent" name="Firstname Lastname" email="firstname.lastname@company.com">
     <mat-nav-list>
+      <td-expansion-panel-group>
+        <ng-template ngFor let-category [ngForOf]="categoriesMenu">
+          <td-expansion-panel label="{{category.menuTitle}}">
+            <a *ngFor="let item of category.menuChild" mat-list-item>
+              {{item.menuTitle}}
+            </a>
+          </td-expansion-panel>
+        </ng-template>
+      </td-expansion-panel-group>
       <a *ngFor="let item of routes" mat-list-item>
-        <mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+        <mat-icon>{{item.menuIcon}}</mat-icon>
+        {{item.menuTitle}}
+      </a>
     </mat-nav-list>
     <div td-navigation-drawer-menu>
       <mat-nav-list>
         <a *ngFor="let item of usermenu" mat-list-item>
-          <mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+          <mat-icon>{{item.menuIcon}}</mat-icon>{{item.menuTitle}}</a>
       </mat-nav-list>
     </div>
   </td-navigation-drawer>

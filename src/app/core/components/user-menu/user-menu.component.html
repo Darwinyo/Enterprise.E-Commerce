@@ -1,22 +1,24 @@
-<a mat-list-item href="">
-  <span matLine class="fs-11">My Profile</span>
-  <div matLine>
-    <span class="fw-600">Darwin Yo</span>
-    <div class="italic fs-11">
-      Verified Account
+<div *ngIf="userMenuViewModel!=null">
+  <a mat-list-item (click)="onMenu_Clicked(myProfileUrl)">
+    <span matLine class="fs-11">My Profile</span>
+    <div matLine>
+      <span class="fw-600">{{userMenuViewModel.userLogin}}</span>
+      <div class="italic fs-11">
+        Verified Account
+      </div>
     </div>
-  </div>
-</a>
-<mat-divider></mat-divider>
-<a mat-list-item href="">
-  <span matLine class="fs-11">Balance</span>
-  <div matLine>
-    <span class="fw-600">Rp 0</span>
-  </div>
-</a>
+  </a>
+  <mat-divider></mat-divider>
+  <a mat-list-item (click)="onMenu_Clicked(balanceUrl)">
+    <span matLine class="fs-11">Balance</span>
+    <div matLine>
+      <span class="fw-600">$ {{userMenuViewModel.balance}}</span>
+    </div>
+  </a>
+</div>
 <mat-divider></mat-divider>
 <ng-template let-last="last" ngFor let-menu [ngForOf]="menuModel">
-  <a mat-list-item routerLink="menu.menuHref">
+  <a mat-list-item (click)="onMenu_Clicked(menu.menuHref)">
     <mat-icon matListAvatar>{{menu.menuIcon}}</mat-icon>
     <p matLine>{{menu.menuTitle}}</p>
   </a>

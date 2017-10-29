@@ -14,21 +14,21 @@ export class NavbarEffects {
             this.coreStore.dispatch(new NavbarActions.ToggleLogin());
         });
     @Effect({ dispatch: false })
-    toggleUser$ = this.actions$
-        .ofType(NavbarActions.TOGGLE_USER)
-        .do(() => console.log('Nav User Toggled'));
-    @Effect({ dispatch: false })
     toogleLogin$ = this.actions$
         .ofType(NavbarActions.TOGGLE_LOGIN)
         .do(() => console.log('Nav Login Toggled'));
+    @Effect()
+    search$ = this.actions$
+        .ofType(NavbarActions.SEARCH)
+        .do(() => console.log('Nav Login Toggled'));
     @Effect({ dispatch: false })
-    toggleCart$ = this.actions$
-        .ofType(NavbarActions.TOGGLE_CART)
-        .do(() => console.log('Nav Cart Toggled'));
+    searchCompleted$ = this.actions$
+        .ofType(NavbarActions.SEARCH_COMPLETED)
+        .do(() => console.log('Nav Login Toggled'));
     @Effect({ dispatch: false })
-    toggleNotif$ = this.actions$
-        .ofType(NavbarActions.TOGGLE_NOTIF)
-        .do(() => console.log('Nav Notif Toggled'));
+    searchFailure$ = this.actions$
+        .ofType(NavbarActions.SEARCH_FAILURE)
+        .do(() => console.log('Nav Login Toggled'));
 
     constructor(private actions$: Actions, private coreStore: Store<fromCore.State>) { }
 }

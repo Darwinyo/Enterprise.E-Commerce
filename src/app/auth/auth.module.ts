@@ -125,8 +125,6 @@ import { LoginNavComponent } from './components/login-nav/login-nav.component';
     MatAutocompleteModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    PortalModule,
-    OverlayModule,
     //#endregion
 
     //#region FlexLayout

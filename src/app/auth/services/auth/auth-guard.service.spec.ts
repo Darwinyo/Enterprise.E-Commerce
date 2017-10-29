@@ -51,6 +51,7 @@ describe('[AUTH] [SERVICE] AUTH-GUARD-SERVICE :', () => {
     done();
   });
   it('should return true when user is logged', (done) => {
+    userLoginResponseModel.isLogged = true;
     const expected = cold('(a|)', { a: true });
     authStore.dispatch(new AuthActions.LoginSuccess(userLoginResponseModel));
     expect(authGuardService.canActivate()).toBeObservable(expected);

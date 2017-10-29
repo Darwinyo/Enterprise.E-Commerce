@@ -2,10 +2,9 @@
   <button mat-icon-button td-menu-button tdLayoutToggle>
     <mat-icon>menu</mat-icon>
   </button>
-  <mat-icon [routerLink]="['/']" class="mat-icon-logo cursor-pointer" svgIcon="assets:enterprise"></mat-icon>
-  <span [routerLink]="['/']" class="cursor-pointer">Enterprise</span>
-  <app-core-nav-searchbar flex></app-core-nav-searchbar>
-  <div fxLayout="row" fxLayoutAlign="end stretch" *ngIf="!(logged$|async)">
+  <span fxShow.xs="false" routerLink="/home" class="cursor-pointer">Enterprise</span>
+  <app-core-nav-searchbar (searchEvent)="onSearchEvent($event)" flex></app-core-nav-searchbar>
+  <div fxLayout="row" fxLayoutAlign="end stretch" *ngIf="(logged$|async)">
     <div fxLayoutAlign="start stretch">
       <button mat-icon-button [matMenuTriggerFor]="notificationsMenu">
         <td-notification-count [notifications]="3">
@@ -16,16 +15,7 @@
         <td-menu>
           <div td-menu-header class="md-subhead">Notifications</div>
           <mat-nav-list dense>
-            <ng-template let-last="last" ngFor [ngForOf]="[0,1,2,3,4,5,6,7,8,9]">
-              <a mat-list-item>
-                <mat-icon matListAvatar>today</mat-icon>
-                <h4 matLine>
-                  <span class="text-wrap">A user did an activity on an item that you've subscribed to follow actions on.</span>
-                </h4>
-                <p matLine>22 minutes ago</p>
-              </a>
-              <mat-divider *ngIf="!last"></mat-divider>
-            </ng-template>
+            <app-core-notification [notification]="notification" (navigateEvent)="onNavigateEvent($event)"></app-core-notification>
           </mat-nav-list>
           <button mat-button color="primary" td-menu-footer>
             See All Notifications
@@ -33,7 +23,7 @@
         </td-menu>
       </mat-menu>
     </div>
-    <div fxLayoutAlign="start stretch">
+    <div fxLayoutAlign="start stretch" fxShow.xs="false">
       <button mat-icon-button [matMenuTriggerFor]="messageMenu">
         <td-notification-count color="primary" [notifications]="false">
           <mat-icon>messages</mat-icon>
@@ -42,12 +32,12 @@
       <mat-menu #messageMenu="matMenu" [overlapTrigger]="false">
         <td-menu>
           <mat-nav-list dense>
-            <app-core-message-menu [menuModel]="messageMenuModel"></app-core-message-menu>
+            <app-core-message-menu [menuModel]="messageMenuModel" (navigateEvent)="onNavigateEvent($event)"></app-core-message-menu>
           </mat-nav-list>
         </td-menu>
       </mat-menu>
     </div>
-    <div fxLayoutAlign="start stretch">
+    <div fxLayoutAlign="start stretch" fxShow.xs="false">
       <button mat-icon-button [matMenuTriggerFor]="cartMenu">
         <td-notification-count [notifications]="3">
           <mat-icon>shopping_cart</mat-icon>
@@ -57,7 +47,7 @@
         <td-menu>
           <div td-menu-header class="md-subhead" *ngIf="cartList.length>0">Cart</div>
           <mat-nav-list dense>
-            <app-core-cart [cartList]="cartList" (reviewEvent)="addReview($event)"></app-core-cart>
+            <app-core-cart [cartList]="cartList" (reviewEvent)="onReviewEvent($event)"></app-core-cart>
           </mat-nav-list>
           <button mat-button color="primary" td-menu-footer *ngIf="cartList.length>0">
             View All Cart
@@ -65,7 +55,7 @@
         </td-menu>
       </mat-menu>
     </div>
-    <div fxLayoutAlign="start stretch">
+    <div fxLayoutAlign="start stretch" fxShow.xs="false">
       <button mat-icon-button [matMenuTriggerFor]="userMenu">
         <td-notification-count [notifications]="false">
           <mat-icon>person</mat-icon>
@@ -74,20 +64,20 @@
       <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
         <td-menu>
           <mat-nav-list dense>
-            <app-core-user-menu [menuModel]="userMenuModel"></app-core-user-menu>
+            <app-core-user-menu [menuModel]="userMenuModel" [userMenuViewModel]="userMenuDetail" (navigateEvent)="onNavigateEvent($event)"></app-core-user-menu>
           </mat-nav-list>
         </td-menu>
       </mat-menu>
     </div>
   </div>
-  <div fxLayout="row" fxLayoutAlign="end stretch" *ngIf="(logged$|async)">
-    <div fxLayoutAlign="start stretch">
+  <div fxLayout="row" fxLayoutAlign="end stretch" *ngIf="!(logged$|async)">
+    <div fxLayoutAlign="start stretch" fxShow.xs="false">
       <button mat-button>
         <a routerLink="/register">Register</a>
       </button>
     </div>
-    <div fxLayoutAlign="start stretch" class="placeholder-menu">
-      <button class="navbar-btn-login" (click)="toggleDropLogin()">Login</button>
+    <div fxLayoutAlign="start stretch" fxShow.xs="false" class="placeholder-menu">
+      <button class="navbar-btn-login" (click)="onNavbarLoginBtn_Click()">Login</button>
       <ul *ngIf="toggleLogin$|async" class="dropdown-menu dropdown-login" role="menu">
         <li>
           <div class="login-nav-container">

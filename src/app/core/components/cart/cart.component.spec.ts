@@ -1,4 +1,4 @@
-import { CartViewmodel } from './../../viewmodels/cart/cart.viewmodel';
+import { CartViewModel } from './../../viewmodels/cart/cart.viewmodel';
 import { cartList } from './../../../shared/mock-data/cart-list';
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
@@ -11,7 +11,7 @@ describe('[CORE] [COMPONENT] CART-COMPONENT', () => {
     let component: CartComponent;
     let fixture: ComponentFixture<CartComponent>;
     let componentEl: HTMLElement;
-    let cartViewModel: CartViewmodel[];
+    let cartViewModel: CartViewModel[];
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [CartComponent],

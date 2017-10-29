@@ -1,3 +1,4 @@
+import { NotificationComponent } from './components/notification/notification.component';
 import { MessageMenuComponent } from './components/message-menu/message-menu.component';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -42,7 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
 // SignalR
 
 import { MatListModule, MatMenuModule } from '@angular/material';
-import { CovalentSearchModule, CovalentNotificationsModule, CovalentMenuModule } from '@covalent/core';
+import { CovalentSearchModule, CovalentNotificationsModule, CovalentMenuModule, CovalentExpansionPanelModule } from '@covalent/core';
 @NgModule({
   declarations: [
     CartComponent,
@@ -50,6 +51,7 @@ import { CovalentSearchModule, CovalentNotificationsModule, CovalentMenuModule }
     NavSearchbarComponent,
     UserMenuComponent,
     MessageMenuComponent,
+    NotificationComponent,
     ErrorNotFoundComponent,
     NavbarContainer,
     ChatComponent,
@@ -62,6 +64,7 @@ import { CovalentSearchModule, CovalentNotificationsModule, CovalentMenuModule }
     CovalentSearchModule,
     CovalentNotificationsModule,
     CovalentMenuModule,
+    CovalentExpansionPanelModule,
     CommonModule,
     RouterModule,
     FormsModule,

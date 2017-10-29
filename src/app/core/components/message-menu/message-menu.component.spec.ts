@@ -9,7 +9,7 @@ import { DebugElement } from '@angular/core';
 
 import { MessageMenuComponent } from './message-menu.component';
 
-fdescribe('MessageMenuComponent', () => {
+describe('[CORE] [COMPONENT] MESSAGE-MENU-COMPONENT', () => {
   let component: MessageMenuComponent;
   let fixture: ComponentFixture<MessageMenuComponent>;
   let componentEl: HTMLElement;

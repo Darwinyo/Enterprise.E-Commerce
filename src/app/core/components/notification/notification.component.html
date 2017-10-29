@@ -1,0 +1,10 @@
+<ng-template let-last="last" ngFor let-item [ngForOf]="notification">
+  <a mat-list-item (click)="onNotification_Clicked(item.notificationUrl)">
+    <mat-icon matListAvatar>{{item.notificationIcon}}</mat-icon>
+    <h4 matLine>
+      <span class="text-wrap">{{item.notificationMessage}}</span>
+    </h4>
+    <p matLine>{{item.notificationDate}}</p>
+  </a>
+  <mat-divider *ngIf="!last"></mat-divider>
+</ng-template>

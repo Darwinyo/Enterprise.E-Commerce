@@ -1,4 +1,4 @@
-import { CartViewmodel } from './../../viewmodels/cart/cart.viewmodel';
+import { CartViewModel } from './../../viewmodels/cart/cart.viewmodel';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class CartComponent implements OnInit {
   @Output() reviewEvent: EventEmitter<string>;
-  @Input() cartList: CartViewmodel[];
+  @Input() cartList: CartViewModel[];
   constructor() {
     this.reviewEvent = new EventEmitter();
     this.cartList = [];

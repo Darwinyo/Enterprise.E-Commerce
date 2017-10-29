@@ -1,4 +1,4 @@
-export interface CartViewmodel {
+export interface CartViewModel {
     productId: string;
     productName: string;
     productPrice: number;

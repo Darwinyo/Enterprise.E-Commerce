@@ -14,3 +14,4 @@ export const CheckEmailControllerUrl = '/api/checkemail';
 export const CheckPhoneControllerUrl = '/api/checkphone';
 export const UserRegistrationControllerUrl = '/api/userregistration';
 export const UserLoginControllerUrl = '/api/userlogin';
+export const SearchControllerUrl = '/api/search';

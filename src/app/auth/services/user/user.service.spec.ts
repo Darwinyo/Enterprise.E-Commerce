@@ -23,7 +23,7 @@ describe('[AUTH] [SERVICE] USER-SERVICE :', () => {
     let mockresponse: ResponseOptions;
     //#endregion
     //#region init items and dispose
-    beforeEach(async (() => {
+    beforeEach(async(() => {
         TestBed.configureTestingModule({
             providers: [
                 MockBackend,
@@ -43,22 +43,24 @@ describe('[AUTH] [SERVICE] USER-SERVICE :', () => {
         userService = service;
         mockBackend = backend;
     }))));
-    beforeEach(async (() => {
+    beforeEach(() => {
         userLoginModel = registration;
         userLoginViewModel = login;
         userLoginResponseModel = loginResponse;
         userRegistrationResponseModel = registrationResponse;
-    }));
-    afterEach(() => {
+    });
+    afterEach(async(() => {
         userLoginModel = null;
         userLoginViewModel = null;
         userLoginResponseModel = null;
+        userRegistrationResponseModel = null;
         userService = null;
         mockBackend = null;
         mockresponse = null;
-    });
+    }));
     //#endregion
     it('should login successfully', (done) => {
+        userLoginResponseModel.isLogged = true;
         mockresponse = new ResponseOptions({
             body: JSON.stringify(userLoginResponseModel)
         });
@@ -97,6 +99,7 @@ describe('[AUTH] [SERVICE] USER-SERVICE :', () => {
         done();
     });
     it('should register successfully', (done) => {
+        userRegistrationResponseModel.result = true;
         mockresponse = new ResponseOptions({
             body: JSON.stringify(userRegistrationResponseModel)
         });
