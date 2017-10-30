@@ -24,7 +24,7 @@ import * as fromAuth from './../../../auth/reducers/auth-state.reducer';
 import * as fromRoot from './../../../reducers/app-state.reducer';
 import * as AuthActions from './../../../auth/actions/auth.actions';
 import { of } from 'rxjs/observable/of';
-fdescribe('[CORE] [CONTAINER] NAVBARCONTAINER', () => {
+xdescribe('[CORE] [CONTAINER] NAVBARCONTAINER', () => {
   let component: NavbarContainer;
   let componentEl: HTMLElement;
   let fixture: ComponentFixture<NavbarContainer>;
@@ -121,8 +121,7 @@ fdescribe('[CORE] [CONTAINER] NAVBARCONTAINER', () => {
   });
   describe('Functionality Tests', () => {
     beforeEach(() => {
-      spyOn
-    })
-    it('should ')
-  })
+    });
+    // it('should ')
+  });
 });

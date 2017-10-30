@@ -1,11 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromAuth from './../../auth/reducers/auth-state.reducer';
-import * as fromNavbar from './../reducers/navbar.reducer';
+import * as fromNavbarContainer from './../reducers/navbar-container.reducer';
 import * as fromChat from './../reducers/chat.reducer';
 import * as fromCore from './../reducers/core.reducer';
 
 export interface CoreState {
-    navbarState: fromNavbar.State;
+    navbarContainerState: fromNavbarContainer.State;
     chatState: fromChat.State;
     coreState: fromCore.State;
 }
@@ -14,35 +14,31 @@ export interface State extends fromAuth.State {
 }
 
 export const coreStateReducer = {
-    navbarState: fromNavbar.navbarReducer,
+    navbarContainerState: fromNavbarContainer.navbarContainerReducer,
     chatState: fromChat.chatReducer,
     coreState: fromCore.coreReducer
 };
 export const selectCoreState = createFeatureSelector<CoreState>('core');
 
-export const selectNavbarState = createSelector(
+export const selectNavbarContainerState = createSelector(
     selectCoreState,
-    (state: CoreState) => state.navbarState
+    (state: CoreState) => state.navbarContainerState
 );
-export const getLoginMenu = createSelector(
-    selectNavbarState,
-    fromNavbar.getLoginMenu
+export const getNavbarContainerLoginMenu = createSelector(
+    selectNavbarContainerState,
+    fromNavbarContainer.getNavbarContainerLoginMenu
 );
-export const getUserMenu = createSelector(
-    selectNavbarState,
-    fromNavbar.getUserMenu
+export const getNavbarContainerLogged = createSelector(
+    selectNavbarContainerState,
+    fromNavbarContainer.getNavbarContainerLogged
 );
-export const getNotifMenu = createSelector(
-    selectNavbarState,
-    fromNavbar.getNotifMenu
+export const getNavbarContainerPending = createSelector(
+    selectNavbarContainerState,
+    fromNavbarContainer.getNavbarContainerPending
 );
-export const getCartMenu = createSelector(
-    selectNavbarState,
-    fromNavbar.getCartMenu
-);
-export const getLogged = createSelector(
-    selectNavbarState,
-    fromNavbar.getLogged
+export const getNavbarContainerError = createSelector(
+    selectNavbarContainerState,
+    fromNavbarContainer.getNavbarContainerError
 );
 export const selectChatState = createSelector(
     selectCoreState,

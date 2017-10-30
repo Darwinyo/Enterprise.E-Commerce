@@ -1,3 +1,4 @@
+import { SearchService } from './services/search/search.service';
 import { NotificationComponent } from './components/notification/notification.component';
 import { MessageMenuComponent } from './components/message-menu/message-menu.component';
 import { UserMenuComponent } from './components/user-menu/user-menu.component';
@@ -15,7 +16,6 @@ import { coreStateReducer } from './reducers/core-state.reducer';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 // Modules
-import { ProductModule } from './../product/product.module';
 import { AuthModule } from './../auth/auth.module';
 
 // // Components
@@ -71,7 +71,6 @@ import { CovalentSearchModule, CovalentNotificationsModule, CovalentMenuModule, 
     ReactiveFormsModule,
     HttpClientModule,
     AuthModule,
-    ProductModule,
     AppRouteModule,
     StoreModule.forFeature('core', coreStateReducer),
     EffectsModule.forFeature([NavbarEffects, ChatEffects])
@@ -86,6 +85,7 @@ import { CovalentSearchModule, CovalentNotificationsModule, CovalentMenuModule, 
   providers: [
     ChatService,
     ChatHub,
+    SearchService
   ]
 })
 export class CoreModule { }

@@ -14,8 +14,10 @@ import { UserMenuViewModel } from '../../viewmodels/user-menu/user-menu.viewmode
 import { userMenuViewModel } from '../../../shared/mock-data/user-menu-view-model';
 import * as fromCore from './../../reducers/core-state.reducer';
 import * as fromAuth from './../../../auth/reducers/auth-state.reducer';
+import * as fromProduct from './../../../product/reducers/product-state.reducer';
 import * as NavbarActions from './../../actions/navbar.actions';
 import * as AuthActions from './../../../auth/actions/auth.actions';
+import * as ProductActions from './../../../product/actions/product.actions';
 import * as LoginNavComponentActions from './../../../auth/actions/login-nav-component.actions';
 
 @Component({
@@ -39,15 +41,15 @@ export class NavbarContainer implements OnInit, OnDestroy {
   notification: NotificationModel[];
   constructor(
     private router: Router,
-    // private productReviewService: ProductReviewService,
-    private coreStore: Store<fromCore.State>
+    private coreStore: Store<fromCore.State>,
+    private productStore: Store<fromProduct.State>
   ) {
     this.cartList = [];
     this.messageMenuModel = [];
     this.userMenuModel = [];
     this.notification = [];
-    this.logged$ = this.coreStore.select(fromCore.getLogged);
-    this.toggleLogin$ = this.coreStore.select(fromCore.getLoginMenu);
+    this.logged$ = this.coreStore.select(fromCore.getNavbarContainerLogged);
+    this.toggleLogin$ = this.coreStore.select(fromCore.getNavbarContainerLoginMenu);
     this.unsubscribe$ = new ReplaySubject(1);
     //#region LoginNav Selectors
     this.loginNavComponentIsPasswordShow$ = this.coreStore.select(fromAuth.getLoginNavComponentIsPasswordShow);
@@ -80,6 +82,7 @@ export class NavbarContainer implements OnInit, OnDestroy {
     this.coreStore.dispatch(new NavbarActions.ToggleLogin());
   }
   onReviewEvent(productId: string) {
+    this.productStore.dispatch(new ProductActions.ReviewProduct(productId));
     // this.productReviewService.addReview(productId).subscribe(
     //   () => console.log('call addReview'),
     //   (err) => console.log(err),
@@ -90,6 +93,6 @@ export class NavbarContainer implements OnInit, OnDestroy {
     this.router.navigate([url]);
   }
   onSearchEvent(searchTerms: string) {
-    
+    this.coreStore.dispatch(new NavbarActions.Search(searchTerms));
   }
 }

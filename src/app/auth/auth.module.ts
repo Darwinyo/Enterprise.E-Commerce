@@ -52,7 +52,7 @@ import {HttpClientModule} from '@angular/common/http';
 
 //#region Effects
 import { RegistrationPageEffects } from './effects/registration-page.effects';
-import { LoginNavComponentEffects } from './effects/login-nav.effects';
+import { LoginNavComponentEffects } from './effects/login-nav-component.effects';
 import { AuthEffects } from './effects/auth.effects';
 import { LoginPageEffects } from './effects/login-page.effects';
 //#endregion

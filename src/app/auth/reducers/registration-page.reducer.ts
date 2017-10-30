@@ -23,8 +23,7 @@ export function registrationPageReducer(state = INITIAL_STATE,
         case AuthActions.REGISTRATION: {
             return {
                 ...state,
-                pending: true,
-                error: null
+                pending: true
             };
         }
 

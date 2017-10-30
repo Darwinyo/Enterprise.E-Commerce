@@ -28,4 +28,5 @@ export class Clear implements Action {
 export type Actions =
     Alert |
     Confirm |
-    Errors;
+    Errors |
+    Clear;

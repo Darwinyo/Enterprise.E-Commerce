@@ -1,3 +1,6 @@
+import { productStateReducer } from './reducers/product-state.reducer';
+import { StoreModule } from '@ngrx/store';
+import { CoreModule } from './../core/core.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -40,7 +43,9 @@ import { ProductRouteModule } from './routes/product-route.module';
   imports: [
     CommonModule,
     FormsModule,
-    ProductRouteModule
+    ProductRouteModule,
+    CoreModule,
+    StoreModule.forFeature('product', productStateReducer),
   ],
   declarations: [
     FilterCategoryComponent,
